@@ -1,35 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Carrinho</title>
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.0.1/mammoth.browser.min.js"></script>
-    <style>
-      #pedido {
-        display: none;
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        padding: 20px;
-        background-color: green;
-        color: #ffff;
-        font-size: 1.4rem;
-      }
-    </style>
-  </head>
-  <body>
-    <a href="../Loja/loja.html">Continuar comprando</a>
-    <h1>Carrinho</h1>
-    <div id="lista"></div>
-    <h3 id="total"></h3>
-    <button onclick="gerarDocumentoWord()">Realizar pedido</button>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carrinho</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.0.1/mammoth.browser.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+  <style>
+    #pedido {
+      display: none;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      background-color: green;
+      color: #ffff;
+      font-size: 1.4rem;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <h2>Drunk Elephant</h2>
+  </nav>
+  <main>
+    <div class="card">
+      <a href="../Loja/loja.html" class="continuar">Continuar comprando</a>
+      <h2 class="titulo">Carrinho</h2>
+      <div id="lista"></div>
+      <h5 id="total"></h5>
+      <button onclick="gerarDocumentoWord()">Realizar pedido</button>
+      <script src="script.js"></script>
+    </div>
     <p id="pedido">
       Pedido gerado com sucesso
       <button id="sc" onclick="successClose()">❌</button>
     </p>
-    <script src="script.js"></script>
-  </body>
+  </main>
+</body>
+
 </html>

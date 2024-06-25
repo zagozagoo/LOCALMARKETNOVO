@@ -1,61 +1,60 @@
-// document.addEventListener("DOMContentLoaded", function () {
-//   // Recupera o carrinho do localStorage
-//   const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+document.addEventListener("DOMContentLoaded", function () {
+  // Recupera o carrinho do localStorage
+  const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
-//   // Elemento onde a lista será exibida
-//   const listaElement = document.getElementById("lista");
+  // Elemento onde a lista será exibida
+  const listaElement = document.getElementById("lista");
 
-//   // Elemento para exibir o total em preço
-//   const totalElement = document.getElementById("total");
+  // Elemento para exibir o total em preço
+  const totalElement = document.getElementById("total");
 
-//   // Função para exibir o carrinho
-//   function exibirCarrinho() {
-//     // Limpa o conteúdo atual da lista
-//     listaElement.innerHTML = "";
+  // Função para exibir o carrinho
+  function exibirCarrinho() {
+    // Limpa o conteúdo atual da lista
+    listaElement.innerHTML = "";
 
-//     // Variável para calcular o total em preço
-//     let totalPreco = 0;
+    // Variável para calcular o total em preço
+    let totalPreco = 0;
 
-//     // Itera sobre os itens do carrinho
-//     carrinho.forEach((item, index) => {
-//       // Cria um elemento de lista para cada item
-//       const listItem = document.createElement("li");
-//       listItem.textContent = `${item.descricao} - Preço: $${item.preco.toFixed(
-//         2
-//       )}`;
+    // Itera sobre os itens do carrinho
+    carrinho.forEach((item, index) => {
+      // Cria um elemento de lista para cada item
+      const listItem = document.createElement("li");
+      listItem.textContent = `${item.descricao} - R${item.preco.toFixed(
+        2
+      )}`;
 
-//       // Cria um botão de remoção
-//       const removeButton = document.createElement("button");
-//       removeButton.textContent = "❌";
-//       removeButton.style.marginLeft = "10px";
-//       removeButton.addEventListener("click", function () {
-//         removerItemDoCarrinho(index);
-//       });
+      // Cria um botão de remoção
+      const removeButton = document.createElement("button");
+      removeButton.textContent = "❌";
+      removeButton.addEventListener("click", function () {
+        removerItemDoCarrinho(index);
+      });
 
-//       // Adiciona o botão à lista
-//       listItem.appendChild(removeButton);
+      // Adiciona o botão à lista
+      listItem.appendChild(removeButton);
 
-//       // Adiciona o item à lista
-//       listaElement.appendChild(listItem);
+      // Adiciona o item à lista
+      listaElement.appendChild(listItem);
 
-//       // Adiciona o preço do item ao total
-//       totalPreco += item.preco;
-//     });
+      // Adiciona o preço do item ao total
+      totalPreco += item.preco;
+    });
 
-//     // Exibe o total em preço no elemento totalElement
-//     totalElement.textContent = `Total: $${totalPreco.toFixed(2)}`;
-//   }
+    // Exibe o total em preço no elemento totalElement
+    totalElement.textContent = `Total: $${totalPreco.toFixed(2)}`;
+  }
 
-//   // Função para remover um item do carrinho
-//   function removerItemDoCarrinho(index) {
-//     carrinho.splice(index, 1);
-//     localStorage.setItem("carrinho", JSON.stringify(carrinho));
-//     exibirCarrinho();
-//   }
+  // Função para remover um item do carrinho
+  function removerItemDoCarrinho(index) {
+    carrinho.splice(index, 1);
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+    exibirCarrinho();
+  }
 
-//   // Chama a função para exibir o carrinho
-//   exibirCarrinho();
-// });
+  // Chama a função para exibir o carrinho
+  exibirCarrinho();
+});
 
 $(document).ready(function () {
   // Recupera o carrinho do localStorage
@@ -79,11 +78,11 @@ $(document).ready(function () {
     $.each(carrinho, function (index, item) {
       // Cria um elemento de lista para cada item
       const listItem = $("<li>").text(
-        `${item.descricao} - Preço: $${item.preco.toFixed(2)}`
+        `${item.descricao} - R$ ${item.preco.toFixed(2)}`
       );
 
       // Cria um botão de remoção
-      const removeButton = $("<button>")
+      const removeButton = $("<button class='remover-item'>")
         .text("❌")
         .css("margin-left", "10px")
         .click(function () {
@@ -150,6 +149,7 @@ function gerarDocumentoWord() {
   link.href = URL.createObjectURL(blob);
   link.download = "carrinho.doc";
   link.click();
+  localStorage.removeItem('carrinho');
   document.getElementById("pedido").style.display = "block";
 }
 

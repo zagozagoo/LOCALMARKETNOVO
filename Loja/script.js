@@ -4,7 +4,6 @@ let produtos;
 window.onload = function () {
   var storedUser = localStorage.getItem("usuario");
   var user = JSON.parse(storedUser);
-  document.getElementById("user").textContent = user.name;
   document.getElementById("perfil").textContent = user.name;
   document.getElementById("idPerfil").textContent = user.id;
 };
@@ -21,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const card = document.createElement("div");
         card.className = "card";
         card.style.width = "18rem";
-        card.style.marginRight = "10px";
+        card.style.margin = "10px";
 
         const imagem = document.createElement("img");
         imagem.src = produto.imagem;
@@ -36,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const cardText = document.createElement("p");
         cardText.className = "card-text";
-        cardText.textContent = "Preço: $" + produto.preco.toFixed(2);
+        cardText.textContent = "R$ " + produto.preco.toFixed(2);
 
         const btnAdicionarAoCarrinho = document.createElement("a");
         btnAdicionarAoCarrinho.href = "#";
